@@ -43,22 +43,22 @@ public class SecurityConfig {
         return provider;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF (for testing purposes)
-                .authorizeHttpRequests(auth -> auth
-                        // Allow all users to access the login page
-                        .requestMatchers("/user/new").permitAll()
-                        // Allow all users to access the homepage and static resources
-                        .requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
-                        // Protect customer pages (require authentication)
-                        .requestMatchers("/customer/**").authenticated()
-                        // Allow all other pages explicitly mentioned
-                        // .anyRequest().permitAll() // Permit all remaining pages
-                )
-                .formLogin(Customizer.withDefaults())
-                .build();
-    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF (for testing purposes)
+//                .authorizeHttpRequests(auth -> auth
+//                        // Allow all users to access the login page
+//                        .requestMatchers("/user/new").permitAll()
+//                        // Allow all users to access the homepage and static resources
+//                        .requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
+//                        // Protect customer pages (require authentication)
+//                        .requestMatchers("/customer/**").authenticated()
+//                        // Allow all other pages explicitly mentioned
+//                        // .anyRequest().permitAll() // Permit all remaining pages
+//                )
+//                .formLogin(Customizer.withDefaults())
+//                .build();
+//    }
 
 }
